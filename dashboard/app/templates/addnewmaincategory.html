@@ -1,0 +1,96 @@
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Parent</th>
+      <th scope="col">image</th>
+      <th scope="col">Position</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Remove</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="" ng-repeat="t in cates">
+      <th scope="row">{{$index}}</th>
+      <td>{{t.name}}</td>
+      <td>{{t.parent}}</td>
+      <td><img class="img-fluid" height="100" width="100" ng-src="../img/{{t.image}}" alt="{{t.image}}" srcset=""></td>
+                  
+      <th scope="col">{{t.position}}</th>
+      <td><button class="btn btn-link" ng-click="up(t)"><i class="fa fa-fw fa-edit"></i></button></td>
+      <td><button class="btn btn-link" ng-click="delete(t)" ><i class="fa fa-fw fa-trash "></i></button></td>
+      <td><button class="btn btn-link" ng-click="active(t)"  title="{{t.status}}"><i class="fa fa-fw fa-eye " ng-class="{'act':t.status === 'deactive'}" ></i></button></td>
+    </tr>
+   
+    </tbody>
+    </table>
+
+
+
+
+<div class="card card-register mx-auto mt-5">
+        <div class="card-header">Add New Menu</div>
+        <div class="card-body">
+          <form name="myForm" ng-submit="add()">
+            <div class="form-group " ng-class="{'has-danger' : myForm.menu.$dirty && myForm.menu.$invalid}">
+              <div class="form-row">
+                <div class="col-md-12">
+                  <label for="exampleInputName">Name :</label>
+                  <input class="form-control" ng-class="{'is-invalid' : myForm.menu.$dirty && myForm.menu.$invalid}" id="menu" name="menu" ng-model="menu"  required type="text" aria-describedby="nameHelp" placeholder="Ex:- Shopping,websites">
+                  <div class="invalid-feedback">Please fill this field.*</div>
+  
+                </div>
+                
+              </div>
+            </div>
+            <div class="form-group" ng-class="{'has-danger' : myForm.position.$dirty && myForm.position.$invalid}">
+              <div class="form-row">
+                <div class="col-md-12">
+                  <label for="exampleInputName">Position :</label>
+                  <input class="form-control"  ng-class="{'is-invalid' : myForm.position.$dirty && myForm.position.$invalid}" id="position" name="position" ng-model="position"  required type="text" aria-describedby="nameHelp" placeholder="Ex:- 1,2">
+                  <div class="invalid-feedback">Please fill this field.*</div>
+                </div>
+                
+              </div>
+            </div>
+            
+            <!-- <div class="form-group">
+              <label for="exampleInputFile">upload Image(Optional)</label>
+              <input type="file" class="form-control-file btn "  file-input="files" id="exampleInputFile" aria-describedby="fileHelp">
+              <small id="fileHelp" class="form-text text-muted">.</small>
+            </div> -->
+
+            <div class="form-group inputDnD">
+                     
+              <label class="sr-only" for="inputFile">Image Upload(Optional)</label>
+              <input type="file" file-input="files" class="form-control-file text-info font-weight-bold" id="inputFile" accept="image/*"  data-title="{{drag}}">
+            </div>
+
+            <input type="submit"   ng-show="!updateId"  class="btn btn-primary btn-block " ng-class="{'disabled' :  myForm.position.$invalid && myForm.menu.$invalid }" value="Add">
+            <input type="submit"  ng-show="updateId" class="btn btn-info btn-block " ng-class="{'disabled' : myForm.position.$invalid && myForm.menu.$invalid }" value="Update">
+   
+  <a class="btn btn-danger btn-block" ui-sref="dashboard">Cancel</a>
+       
+          </form>
+          <br>
+          <div class="alert alert-dismissible alert-success" ng-show="msg === '0'">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Well done!</strong> You successfully Added New Main Category.
+          </div>
+
+          <div class="alert alert-dismissible alert-danger" ng-show="msg === '1'">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> Please Try Again.
+          </div>
+          <div class="alert alert-dismissible alert-warning" ng-show="msg === 'Already Exists'">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <h4 class="alert-heading">Warning!</h4>
+            <p class="mb-0">Aleart Category Exists. </p>
+          </div>
+
+        </div>
+      </div>

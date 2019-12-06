@@ -1,0 +1,41 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="#">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">All Users</li>
+  </ol>
+
+
+  
+
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Username</th>
+        <th scope="col">Role</th>
+        <th scope="col">Date</th>
+        <th scope="col">Edit Role</th>
+        <!-- <th scope="col">Remove</th> -->
+        <th scope='col'>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="" ng-repeat="t in allusers.data">
+        <th scope="row">{{$index}}</th>
+        <td>{{t.name}}</td>
+        <td>{{t.email}}</td>
+        <td>{{t.username}}</td>
+        <td>{{t.role}}</td>
+        <td>{{t.date}}</td>
+        <td><a class="btn btn-link" ui-sref='dashboard.allUsers.updateRole({uid:t.uni_id})'><i class="fa fa-fw fa-edit"></i></a></td>
+        <!-- <td><button class="btn btn-link" ng-click="delete(t)"><i class="fa fa-fw fa-trash "></i></button></td> -->
+        <td><button class="btn btn-link" ng-click="active(t)"><i class="fa fa-fw fa-eye " ng-class="{'act':t.status === 'deactive'}"></i></button></td>
+      </tr>
+     
+      </tbody>
+      </table>
+
+      <div ui-view></div>

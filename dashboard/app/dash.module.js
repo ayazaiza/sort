@@ -1,0 +1,1 @@
+angular.module('dashApp',['ui.router','ngAnimate','ui.bootstrap','ngStorage']);

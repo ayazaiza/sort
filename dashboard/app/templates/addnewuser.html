@@ -1,0 +1,78 @@
+<div class="card card-register mx-auto mt-5">
+        <div class="card-header">Register an Account</div>
+        <div class="card-body">
+          <form  name="registerForm" ng-submit="submit()" novalidate>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="exampleInputName">First name</label>
+                  <input class="form-control" id="fname" type="text" name="fname" ng-model="reg.fname" required ng-class="{'is-invalid':registerForm.fname.$dirty && registerForm.fname.$invalid && registerForm.fname.$error.required}" aria-describedby="nameHelp" placeholder="Enter first name">
+                  <div class="invalid-feedback">Please fill this field.*</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="exampleInputName">Last name</label>
+                  <input class="form-control" id="lname" type="text" name="lname" ng-model="reg.lname" required ng-class="{'is-invalid':registerForm.lname.$dirty && registerForm.lname.$invalid && registerForm.lname.$error.required}" aria-describedby="nameHelp" placeholder="Enter first name">
+                  <div class="invalid-feedback">Please fill this field.*</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input class="form-control" id="email" type="email" name="email" ng-model="reg.email" required ng-class="{'is-invalid':registerForm.email.$invalid && registerForm.email.$dirty}" aria-describedby="emailHelp" placeholder="Enter email">
+              <div class="invalid-feedback" ng-show="registerForm.email.$error.required">Please fill Email field.*</div>
+              <div class="invalid-feedback" ng-show="registerForm.email.$error.email">Invalid email*</div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">User name</label>
+              <input class="form-control" id="uname" type="text" name="uname" ng-model="reg.uname" required ng-class="{'is-invalid':registerForm.uname.$invalid && registerForm.uname.$dirty}" aria-describedby="emailHelp" placeholder="choose Username">
+              <div class="invalid-feedback" ng-show="registerForm.uname.$error.required">Please fill username field.*</div>
+
+            </div>
+            <div class="form-group">
+              <label for="exampleSelect1">Select Role</label>
+              <select name="role" required class="form-control" id="role" ng-model="reg.role">
+                  <!-- <option value="{{name.name}}" ng-show="name.name">{{name.name}}</option>  -->
+                  <option value="admin">Admin</option>
+                  <option value="editor">Editor</option>
+              </select>
+              <span class="error" ng-show="registerForm.role.$dirty && registerForm.role.$invalid">Select service</span>
+  
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input class="form-control" id="pwd" type="password" id="pwd" name="pwd" ng-model="reg.pwd" ng-class="{'is-invalid':registerForm.pwd.$dirty  && registerForm.pwd.$invalid}" required placeholder="Password">
+                  <div class="invalid-feedback" ng-show="registerForm.pwd.$error.required">Please fill Password field.*</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="exampleInputPassword1">Confirm Password</label>
+                  <input class="form-control" id="cpwd" type="password" id="cpwd" name="cpwd" ng-model="reg.cpwd" ng-class="{'is-invalid':registerForm.cpwd.$dirty  && registerForm.cpwd.$invalid && reg.pwd != reg.cpwd }" required placeholder="Confirm Password">
+                  <div class="invalid-feedback" ng-show="registerForm.cpwd.$error.required">Please fill confirm Password field.*</div>
+                  <div class="invalid-feedback" ng-show="reg.pwd != reg.cpwd">Password fields doesn't match</div>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" ng-disabled="registerForm.$invalid" >Register</button>
+          </form>
+          <br>
+          <div class="alert alert-dismissible alert-success" ng-show="error === '0'">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>Well done!</strong> You successfully Added New user
+            </div>
+            <br>
+            <div class="alert alert-dismissible alert-danger" ng-show="error === reg.email">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>Sorry !</strong> {{reg.email}} is already Exists
+            </div>
+            <br>
+            <div class="alert alert-dismissible alert-danger" ng-show="error === reg.uname">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>Sorry !</strong> {{reg.uname}} is already Exists
+            </div>
+          <!-- <div class="text-center">
+            <a class="d-block small mt-3" href="login.html">Login Page</a>
+            <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+          </div> -->
+        </div>
+      </div>

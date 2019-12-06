@@ -1,0 +1,25 @@
+<div class="card card-register mx-auto mt-5">
+    <div class="card-header">Update user Role</div>
+    <div class="card-body">
+      <form  name="updateRole" ng-submit="updaterole()" novalidate>
+
+            <div class="form-group">
+                    <label for="exampleSelect1"></label>
+                    <select name="role" required class="form-control" id="role" ng-model="role">
+                        <!-- <option value="{{name.name}}" ng-show="name.name">{{name.name}}</option>  -->
+                        <option value="admin">Admin</option>
+                        <option value="editor">Editor</option>
+                    </select>
+                    <span class="error" ng-show="updateRole.role.$dirty && updateRole.role.$invalid">Select service</span>
+        
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-block" ng-disabled="updateRole.$invalid" >Update</button>
+                  <a class="btn btn-danger btn-block" ui-sref="allUsers">Cancel</a>
+
+
+        </form>
+
+        </div>
+        </div>
+    
